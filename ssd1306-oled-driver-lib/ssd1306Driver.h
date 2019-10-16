@@ -43,6 +43,7 @@
 #define SSD1306_NOP                    0xE3
 #define SSD1306_SET_CHARGE_PUMP        0x8D
 
+//Function pointer for sending the buffer to OLED display module
 typedef void (*sendFunction)(unsigned char buffer, unsigned char dataOrCommand);
 
 void OLED_setSendFunction(sendFunction _send);

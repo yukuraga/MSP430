@@ -8,6 +8,7 @@ char displayBuffer[1024] = { 0 };
 int cursor = 0;
 int numOfColumnsInRow = 0;
 int line = 0;
+sendFunction OLED_sendBufferToOLED;
 
 //number of char bytes
 int OLED_getNumberOfCharBytes(char c) {
@@ -59,6 +60,7 @@ void OLED_scrollUp() {
 
 }
 
+//Writes the text to buffer.
 void OLED_printTextToBuffer(const char* txt, int size) {
     unsigned int i = 0;
 	for(; i<size; i++)
@@ -89,8 +91,6 @@ void OLED_printTextToBuffer(const char* txt, int size) {
         numOfColumnsInRow += OLED_getNumberOfCharBytes(txt[i]);
 	}
 }
-
-sendFunction OLED_sendBufferToOLED;
 
 void OLED_updateDisplay() {
     int i = 0;
