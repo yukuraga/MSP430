@@ -10,6 +10,11 @@ int numOfColumnsInRow = 0;
 int line = 0;
 sendFunction OLED_sendBufferToOLED;
 
+void OLED_setSendFunction(sendFunction _send) {
+
+    OLED_sendBufferToOLED = _send;
+}
+
 //number of char bytes
 int OLED_getNumberOfCharBytes(char c) {
 	unsigned int i = 6 * (c - 0x20);
@@ -96,11 +101,6 @@ void OLED_updateDisplay() {
     int i = 0;
     for(;i<DISPLAY_BUFFER_SIZE;i++)
         OLED_sendBufferToOLED(displayBuffer[i], DATA);
-}
-
-void OLED_setSendFunction(sendFunction _send) {
-
-    OLED_sendBufferToOLED = _send;
 }
 
 void OLED_sendCommand(unsigned char command){
